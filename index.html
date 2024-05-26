@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Mini Web Calculator</title>
+</head>
+<body>
+    Mini calculator<br><br>
+    <table id="calculator">
+        <tr>
+            <td colspan="3"><input type="text" id="display" value=""></td>
+            <td><input type="button" value="C" onclick="clr()"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="add_to_display('1')" onkeydown="on_key(event)"></td>
+            <td><input type="button" value="2" onclick="add_to_display('2')" onkeydown="on_key(event)"></td>
+            <td><input type="button" value="3" onclick="add_to_display('3')" onkeydown="on_key(event)"></td>
+            <td><input type="button" value="+" onclick="add_to_display('+')" onkeydown="on_key(event)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="add_to_display('4')" onkeydown="on_key(event)"></td>
+            <td><input type="button" value="5" onclick="add_to_display('5')" onkeydown="on_key(event)"></td>
+            <td><input type="button" value="6" onclick="add_to_display('6')" onkeydown="on_key(event)"></td>
+            <td><input type="button" value="-" onclick="add_to_display('-')" onkeydown="on_key(event)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="add_to_display('7')" onkeydown="on_key(event)"></td>
+            <td><input type="button" value="8" onclick="add_to_display('8')" onkeydown="on_key(event)"></td>
+            <td><input type="button" value="9" onclick="add_to_display('9')" onkeydown="on_key(event)"></td>
+            <td><input type="button" value="*" onclick="add_to_display('*')" onkeydown="on_key(event)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="0" onclick="add_to_display('0')" onkeydown="on_key(event)"></td>
+            <td><input type="button" value="." onclick="add_to_display('.')" onkeydown="on_key(event)"></td>
+            <td><input type="button" value="=" onclick="calculate()"></td>
+            <td><input type="button" value="/" onclick="add_to_display('/')" onkeydown="on_key(event)"></td>
+        </tr>
+    </table>
+
+    <script>
+        const display = document.getElementById("display");
+
+        function add_to_display(val){
+            // gets element that id=result, and set its value to the var get from the button pressed
+            document.getElementById("display").value += val;
+        }
+
+        function clr(){ // so apparently clear() doesnt work?????
+            document.getElementById("display").value = "";
+        }
+
+        function on_key(event){ // if user uses the keyboard
+            if (event.key == "0" || event.key == "1" || event.key == "2" || event.key == "3" ||
+            event.key == "4" || event.key == "5" || event.key == "6" || event.key == "7" ||
+            event.key == "8" || event.key == "9" || event.key == "+" || event.key == "-" ||
+            event.key == "*" || event.key == "/")
+                document.getElementById("display").value += event.key;
+            
+        }
+
+        function calculate(){
+            display.value = eval(display.value)
+        }
+
+        
+
+    </script>
+
+</body>
+</html>
